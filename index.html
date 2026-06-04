@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -71,7 +72,7 @@
   }
 
   .wordmark {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', cursive;
     font-size: clamp(72px, 14vw, 140px);
     font-weight: 900;
     letter-spacing: -0.02em;
@@ -207,7 +208,16 @@
     background: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(26,23,20,0.04) 28px, rgba(26,23,20,0.04) 29px);
   }
 
-  .guanaco-svg { position: relative; z-index: 1; filter: drop-shadow(2px 3px 0 rgba(26,23,20,0.12)); }
+  .guanaco-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(2px 4px 0 rgba(26,23,20,0.15));
+    mix-blend-mode: multiply; /* blends the paper-colored bg of the PNG naturally */
+  }
 
   .guanaco-caption {
     position: relative;
@@ -535,7 +545,7 @@
 <div class="hero">
   <div class="hero-text">
     <div class="hero-eyebrow">Back from the archive</div>
-    <h1 class="hero-headline">We're back.<br>The <em>llama</em> never left.</h1>
+    <h1 class="hero-headline">We're back.<br>The <em>guanaco</em> never left.</h1>
     <p class="hero-body">
       Wanaki started during the dot-com boom — a cartoon strip about offices, technology, and the gap between what people say in meetings and what they're actually thinking. The world got more absurd. The cartoons aged suspiciously well. Now we're back.
     </p>
@@ -555,29 +565,11 @@
     </div>
   </div>
   <div class="hero-illustration">
-    <svg class="guanaco-svg" width="180" height="200" viewBox="0 0 180 200" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="#1a1714" stroke-linecap="round" stroke-linejoin="round">
-        <ellipse cx="90" cy="140" rx="38" ry="45" fill="#c8a96e" stroke="#1a1714" stroke-width="2"/>
-        <path d="M75 100 Q72 75 78 55" stroke="#1a1714" stroke-width="2" fill="none"/>
-        <path d="M105 100 Q108 75 102 55" stroke="#1a1714" stroke-width="2" fill="none"/>
-        <ellipse cx="90" cy="100" rx="16" ry="8" fill="#c8a96e" stroke="#1a1714" stroke-width="1.5"/>
-        <ellipse cx="90" cy="48" rx="20" ry="24" fill="#c8a96e" stroke="#1a1714" stroke-width="2"/>
-        <path d="M74 30 Q68 15 72 10 Q78 18 76 28" fill="#c8a96e" stroke="#1a1714" stroke-width="1.5"/>
-        <path d="M106 30 Q112 15 108 10 Q102 18 104 28" fill="#c8a96e" stroke="#1a1714" stroke-width="1.5"/>
-        <circle cx="83" cy="45" r="3.5" fill="#1a1714"/>
-        <circle cx="97" cy="45" r="3.5" fill="#1a1714"/>
-        <circle cx="84.2" cy="43.8" r="1" fill="#fff"/>
-        <circle cx="98.2" cy="43.8" r="1" fill="#fff"/>
-        <ellipse cx="90" cy="58" rx="6" ry="4" fill="#b89055" stroke="#1a1714" stroke-width="1"/>
-        <path d="M87 58 Q90 60 93 58" stroke="#1a1714" stroke-width="1" fill="none"/>
-        <rect x="62" y="175" width="12" height="24" rx="4" fill="#b89055" stroke="#1a1714" stroke-width="1.5"/>
-        <rect x="78" y="178" width="12" height="21" rx="4" fill="#b89055" stroke="#1a1714" stroke-width="1.5"/>
-        <rect x="94" y="178" width="12" height="21" rx="4" fill="#b89055" stroke="#1a1714" stroke-width="1.5"/>
-        <rect x="110" y="175" width="12" height="24" rx="4" fill="#b89055" stroke="#1a1714" stroke-width="1.5"/>
-        <path d="M128 130 Q145 120 140 135 Q135 150 128 145" fill="#c8a96e" stroke="#1a1714" stroke-width="1.5"/>
-        <ellipse cx="90" cy="148" rx="20" ry="28" fill="#e8d5a8" stroke="none"/>
-      </g>
-    </svg>
+    <img
+      class="guanaco-img"
+      src="assets/guanaco.png"
+      alt="Wanaki guanaco character — ironic, calm, half-lidded expression"
+    />
     <p class="guanaco-caption">"I've been here the whole time.<br>You just weren't paying attention."</p>
   </div>
 </div>
@@ -641,12 +633,12 @@
 <footer class="footer">
   <span class="footer-brand">WANAKI</span>
   <div class="footer-meta">
-    Wanaki Cartoons <br>
+    Wanaki Cartoons by @partime_tourist<br>
     <a href="https://linkedin.com/company/wanaki" class="footer-link">LinkedIn</a>
     &nbsp;·&nbsp;
     <a href="https://www.instagram.com/wanaki.cartoons/" class="footer-link">Instagram</a>
     &nbsp;·&nbsp;
-    github.com/wanakiStudio
+    wanakistudio.github.io
   </div>
 </footer>
 
