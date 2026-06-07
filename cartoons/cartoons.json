@@ -3,8 +3,8 @@
     "file": "wanaki-serie-tech.jpg",
     "title": "Available now — Serie AI",
     "episodes": [
-      { "file": "tech-01.jpg", "caption": "Episode 08 — AI Usage" },
-      { "file": "tech-02.jpg", "caption": "Episode 09 — AI First" },
+      { "file": "tech-02.jpg", "caption": "Episode 08 — AI First" , "isPaywall": true },
+      { "file": "tech-01.jpg", "caption": "Episode 09 — AI Usage" },
       { "file": "tech-03.jpg", "caption": "Subscribe for more", "isPaywall": true }
     ]
   },
