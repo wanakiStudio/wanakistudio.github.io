@@ -749,137 +749,6 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  /* ── SHARE MODAL ── */
-  .share-modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(26,23,20,0.55);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-  }
-
-  .share-modal-backdrop.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .share-modal {
-    background: var(--paper);
-    border: 2px solid var(--ink);
-    max-width: 480px;
-    width: 100%;
-    padding: 28px;
-    transform: translateY(12px);
-    transition: transform 0.2s;
-    position: relative;
-  }
-
-  .share-modal-backdrop.open .share-modal {
-    transform: translateY(0);
-  }
-
-  .share-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
-  }
-
-  .share-modal-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .share-modal-close {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: var(--muted);
-    line-height: 1;
-    padding: 0 0 0 12px;
-  }
-
-  .share-modal-close:hover { color: var(--ink); }
-
-  .share-modal-instruction {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-
-  .share-modal-textarea {
-    width: 100%;
-    min-height: 160px;
-    padding: 12px;
-    background: #fff;
-    border: 1.5px solid var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--ink);
-    resize: vertical;
-    outline: none;
-  }
-
-  .share-modal-textarea:focus { border-color: var(--accent); }
-
-  .share-modal-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-  }
-
-  .share-modal-copy {
-    flex: 1;
-    padding: 11px;
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-
-  .share-modal-copy:hover { background: #333; }
-  .share-modal-copy.copied { background: #2d7a3a; }
-
-  .share-modal-open {
-    flex: 1;
-    padding: 11px;
-    background: #0a66c2;
-    color: #fff;
-    border: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
-    text-decoration: none;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-
-  .share-modal-open:hover { background: #084d94; }
-
   @media (max-width: 700px) {
     .hero { grid-template-columns: 1fr; }
     .hero-illustration { display: none; }
@@ -988,24 +857,6 @@
     <div class="episodes-inner">
       <div class="episodes-label" id="episodes-label">Episodes</div>
       <div class="episodes-grid" id="episodes-grid"></div>
-    </div>
-  </div>
-</div>
-
-<!-- SHARE MODAL -->
-<div class="share-modal-backdrop" id="share-modal-backdrop">
-  <div class="share-modal" role="dialog" aria-modal="true" aria-label="Share on LinkedIn">
-    <div class="share-modal-header">
-      <span class="share-modal-title">Share on LinkedIn</span>
-      <button class="share-modal-close" id="share-modal-close" aria-label="Close">&#215;</button>
-    </div>
-    <p class="share-modal-instruction">Copy the text below, then open LinkedIn and paste it as a new post. Attach the image from your device.</p>
-    <textarea class="share-modal-textarea" id="share-modal-text" readonly></textarea>
-    <div class="share-modal-actions">
-      <button class="share-modal-copy" id="share-modal-copy-btn">Copy text</button>
-      <a class="share-modal-open" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener" id="share-modal-li-btn">
-        Open LinkedIn ↗
-      </a>
     </div>
   </div>
 </div>
@@ -1246,71 +1097,16 @@ function showEpisodes(serie) {
 }
 
 function makeLinkedInShareBtn(ep) {
-  var btn = document.createElement('button');
+  var pageUrl = encodeURIComponent(window.location.href.split('?')[0]);
+  var btn = document.createElement('a');
   btn.className = 'share-btn linkedin-btn';
+  btn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+  btn.target = '_blank';
+  btn.rel = 'noopener';
   btn.title = 'Share on LinkedIn';
   btn.innerHTML = SVG_LI + 'Share';
-  btn.addEventListener('click', function() {
-    openShareModal(ep);
-  });
   return btn;
 }
-
-// ── SHARE MODAL ───────────────────────────────────────────
-var modalBackdrop  = document.getElementById('share-modal-backdrop');
-var modalTextarea  = document.getElementById('share-modal-text');
-var modalCopyBtn   = document.getElementById('share-modal-copy-btn');
-var modalCloseBtn  = document.getElementById('share-modal-close');
-
-function openShareModal(ep) {
-  var pageUrl = window.location.href.split('?')[0];
-  var caption = (ep && ep.caption) ? ep.caption : '';
-  var text =
-    'Wanaki is back.\n' +
-    'Because someone has to say what everyone\'s thinking.\n\n' +
-    (caption ? caption + '\n\n' : '') +
-    '→ ' + pageUrl + '\n\n' +
-    '#Wanaki #WanakiCartoons #CorporateHumor';
-
-  modalTextarea.value = text;
-  modalBackdrop.classList.add('open');
-  // select all text so it's easy to copy manually too
-  setTimeout(function() { modalTextarea.select(); }, 150);
-}
-
-function closeShareModal() {
-  modalBackdrop.classList.remove('open');
-  modalCopyBtn.textContent = 'Copy text';
-  modalCopyBtn.classList.remove('copied');
-}
-
-modalCloseBtn.addEventListener('click', closeShareModal);
-modalBackdrop.addEventListener('click', function(e) {
-  if (e.target === modalBackdrop) closeShareModal();
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeShareModal();
-});
-
-modalCopyBtn.addEventListener('click', function() {
-  modalTextarea.select();
-  // Try modern clipboard API first, fall back to execCommand
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(modalTextarea.value).then(function() {
-      modalCopyBtn.textContent = 'Copied ✓';
-      modalCopyBtn.classList.add('copied');
-    }).catch(function() {
-      // fallback
-      document.execCommand('copy');
-      modalCopyBtn.textContent = 'Copied ✓';
-      modalCopyBtn.classList.add('copied');
-    });
-  } else {
-    document.execCommand('copy');
-    modalCopyBtn.textContent = 'Copied ✓';
-    modalCopyBtn.classList.add('copied');
-  }
-});
 
 function makeInstagramShareBtn() {
   var btn = document.createElement('button');
