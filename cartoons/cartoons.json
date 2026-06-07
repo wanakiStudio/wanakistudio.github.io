@@ -20,12 +20,18 @@
   {
     "file": "wanaki-serie-classics.jpg",
     "title": "Available by subscription",
-    "episodes": []
+    "episodes": [ 
+      { "file": "wanaki-classics-ep01.jpg", "caption": "Episode 01 - Wanaki Classics" },
+            { "file": "wanaki-classics-ep01.jpg", "caption": "Subscribe for more", "isPaywall": true }
+    ]
   },
   {
     "file": "wanaki-serie-classics-agile.jpg",
     "title": "Available by subscription",
-    "episodes": []
+    "episodes": [ 
+      { "file": "wanaki-classics-agile-ep01.jpg", "caption": "Episode 01 - Wanaki Agile Classics" },
+       { "file": "wanaki-classics-agile-ep01.jpg", "caption": "Subscribe for more", "isPaywall": true }
+    ]
   },
   {
     "file": "wanaki-insta.jpg",
