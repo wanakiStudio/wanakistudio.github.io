@@ -3,9 +3,16 @@
     "file": "wanaki-serie-tech.jpg",
     "title": "Available now — Serie AI",
     "episodes": [
-      { "file": "tech-02.jpg", "caption": "Episode 08 — AI First" , "isPaywall": true },
-      { "file": "tech-01.jpg", "caption": "Episode 09 — AI Usage" },
-      { "file": "tech-03.jpg", "caption": "Subscribe for more", "isPaywall": true }
+      { "file": "tech-02.jpg", "caption": "Episode 01 — The Dashboard Nobody Asked For" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 02 — Governance After the Fire" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 03 — The Pilot That Never Landed" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 04 — Deploy First, Think Later" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 05 — The Great Automation Illusion" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 06 — DevOps, But Make It Political" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 07 — More Data, Less Decision" , "isPaywall": true },
+      { "file": "tech-02.jpg", "caption": "Episode 08 — AI First vs Data First" , "isPaywall": true },
+      { "file": "tech-01.jpg", "caption": "Episode 09 — AI Usage Is Not Value" },
+      { "file": "tech-02.jpg", "caption": "Episode 10 — When the Demo Works Too Well" , "isPaywall": true }
     ]
   },
   {
