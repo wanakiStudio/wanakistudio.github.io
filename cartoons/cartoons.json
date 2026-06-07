@@ -3,8 +3,8 @@
     "file": "wanaki-serie-tech.jpg",
     "title": "Available now — Serie AI",
     "episodes": [
-      { "file": "tech-01.jpg", "caption": "Episode 1 — The Roadmap" },
-      { "file": "tech-02.jpg", "caption": "Episode 2 — The Sprint" },
+      { "file": "tech-01.jpg", "caption": "Episode 08 — AI Usage" },
+      { "file": "tech-02.jpg", "caption": "Episode 09 — AI First" },
       { "file": "tech-03.jpg", "caption": "Subscribe for more", "isPaywall": true }
     ]
   },
@@ -12,7 +12,9 @@
     "file": "wanaki-serie-mundial.jpg",
     "title": "Coming soon — Serie Mundial 2026",
     "episodes": [
-      { "file": "mundial-01.jpg", "caption": "Episode 1 — The Draw" }
+      { "file": "wanaki-mundial-ep01.jpgg", "caption": "Episode 01 - Wanaki Mundial 2026" },
+       { "file": "wanaki-mundial-ep02.jpgg", "caption": "Episode 02 - Wanaki Mundial 2026" },
+        { "file": "wanaki-mundial-ep02.jpgg", "caption": "Subscribe for more", "isPaywall": true }
     ]
   },
   {
