@@ -561,7 +561,7 @@
   }
 
   .episode-img-wrap {
-    aspect-ratio: 4/3;
+    aspect-ratio: 4/5;
     overflow: hidden;
     position: relative;
     background: var(--paper-dark);
@@ -590,7 +590,7 @@
 
   /* paywall card */
   .episode-paywall {
-    aspect-ratio: 4/3;
+    aspect-ratio: 4/5;
     background: var(--paper-dark);
     display: flex;
     flex-direction: column;
@@ -1078,7 +1078,7 @@ function showEpisodes(serie) {
       // share buttons
       var shareRow = document.createElement('div');
       shareRow.className = 'episode-share-row';
-      shareRow.appendChild(makeLinkedInShareBtn());
+      shareRow.appendChild(makeLinkedInShareBtn(ep));
       shareRow.appendChild(makeInstagramShareBtn());
       foot.appendChild(shareRow);
 
@@ -1096,15 +1096,26 @@ function showEpisodes(serie) {
   }, 80);
 }
 
-function makeLinkedInShareBtn() {
-  var pageUrl = encodeURIComponent(window.location.href.split('?')[0]);
-  var btn = document.createElement('a');
+function makeLinkedInShareBtn(ep) {
+  var pageUrl = window.location.href.split('?')[0];
+  var btn = document.createElement('button');
   btn.className = 'share-btn linkedin-btn';
-  btn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
-  btn.target = '_blank';
-  btn.rel = 'noopener';
   btn.title = 'Share on LinkedIn';
   btn.innerHTML = SVG_LI + 'Share';
+  btn.addEventListener('click', function() {
+    var caption = (ep && ep.caption) ? ep.caption : '';
+    var text = 'Wanaki is back.\n'
+      + 'Because someone has to say what everyone\'s thinking.\n\n'
+      + (caption ? caption + '\n\n' : '')
+      + '→ ' + pageUrl + '\n\n'
+      + '#Wanaki #WanakiCartoons #CorporateHumor';
+    // Copy composed text to clipboard, then open LinkedIn
+    navigator.clipboard.writeText(text).catch(function() {});
+    showToast('Post text copied — paste it on LinkedIn!');
+    setTimeout(function() {
+      window.open('https://www.linkedin.com/feed/', '_blank', 'noopener');
+    }, 600);
+  });
   return btn;
 }
 
